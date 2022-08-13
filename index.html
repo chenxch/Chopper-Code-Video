@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Chopper Code Video</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+  <link href="https://unpkg.com/nes.css@latest/css/nes.min.css" rel="stylesheet">
+  <link href="https://nostalgic-css.github.io/NES.css/style.css" rel="stylesheet">
+  <style>
+    body {
+      font-size: 12px;
+      margin: 10px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      font-family: "Press Start 2P";
+    }
+
+    #player {
+      display: inline-block;
+      width: 49%;
+      box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .5);
+      visibility: hidden;
+    }
+
+    canvas {
+      display: none;
+      box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, .5);
+    }
+
+    #showDiv,
+    #cover {
+      display: inline-block;
+      margin-left: 15px;
+      position: absolute;
+      top: 60px;
+      font-family: simsun;
+    }
+
+    #showDiv p,
+    #cover p {
+      display: block;
+      line-height: 1;
+      margin: 0;
+    }
+
+    .title {
+      font-size: 40px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div>
+    <button type="button" class="nes-btn is-primary" onclick="play()"> play</button>
+    <button type="button" class="nes-btn is-primary" onclick="pause()"> pause</button>
+  </div>
+  <video src="./demo.mp4" controls id="player"></video>
+  <div id="cover" style="width: 899.625px; height: 506.031px;">
+    <p>
+      o!!!!!!!!!!*!!!!!!!!!!!!!!!$**********!;;;;;;;;;;;;;;;;;;;;;;;*ooooooooo!;;;;;;;;;;o*;!!;;;;;;;;!ooooooooo$;;;;;!8&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;8!!!&amp;&amp;&amp;&amp;&amp;!&amp;&amp;8;&amp;&amp;&amp;&amp;&amp;$$$$$$$
+    </p>
+    <p>
+      !!!*!!!!!o!!!!!!!!!!!!!!!!!$**********;;;;;;;;;;;;;;;;;;;;;;;;$ooooooooo*!!$*oooooo$!;;;;;;;;;;;$ooooooooo!;;;$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;o!&amp;&amp;&amp;&amp;!&amp;&amp;!;&amp;&amp;&amp;&amp;&amp;&amp;$$$$$$
+    </p>
+    <p>
+      !!!!!!*!!!!!!!!!!!!!!!!!!!!$$$$*******;;;;;;;;;;;;;;;;;;;;;;;;!ooooooooooooooooooooooooo;;;;;;;$ooooooooo$;;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!&amp;&amp;&amp;&amp;!;;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;o*$
+    </p>
+    <p>
+      !!!!*!!!*!!!!!!!!!o!!!!!!!!!$$$$******;;;;;;;;;;;;;;;;;;;;;!$ooooooooooooooo*oooooooooooooo;;oooooooooooo;;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!&amp;&amp;&amp;&amp;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$oo
+    </p>
+    <p>
+      !o!!!!!!!!!*!oooooooo!!!!!!!!$$$$*****;;;;;;;;;;;;;;;;;$ooooooooo*oooooooooooooo$$ooooooo$*ooooooooooooo!;!$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!$*$
+    </p>
+    <p>
+      !!!!!!!!!!!!ooooooooooo!!!!!!!$$$$$$$*;;;;;!$ooooooooooooooooooooooooooooooooooooooooooooooooooooooooo$;;;$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!;!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;*****
+    </p>
+    <p>
+      !!!!!!!!!!!ooooo*oooooooo!!!!!!!$$$$$$!;;;;oooooooooooooooooooooooooo*oooooo$ooooooooooooooooooooooo$;;;;;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!;;;!&amp;$&amp;&amp;&amp;&amp;&amp;$******
+    </p>
+    <p>
+      !!!!!!!!!!ooooooooo*oooooo!!!!!!!!!o&amp;$$;;;!o*oooooooooooooooooooooooooo*oooo*oo$oo*oooooooooooooo*oooo*;;;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;!;;;;;;;!!!********
+    </p>
+    <p>
+      !!!!!!!!!oooooooooooo*ooooo!!!!!!!!!!$$;;;!o*o$oo$ooooooo$oooooooooooooooo*$ooooooo$ooooooooo$*oooooooooo!!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$;;;;;;;;;o*******$*
+    </p>
+    <p>
+      !!!!!!!!oooooooooooooooo$oooo!!!!!!!!!!!;;!ooooooooooooooo$ooooooooooo*$$$$**$$$$$&amp;&amp;$$*oooooooooooooooooooo$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$;;;;;;;;$*******$**
+    </p>
+    <p>
+      !!!!!!!ooooooooooo*oooooooo*o!!!!!!!!!!*;;;oo$o$ooooooooooooooo*$**$$$$$$&amp;$$$$$$$$$$$$ooooooooooooooooooooooo$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;;;;;;;;;***********$
+    </p>
+    <p>
+      !!!!!!!!ooooooooooooo*ooooooo*!!!!!!!!!!;;;*ooooooooooo*o*$***$$$$$$$$$$$$$$$$$$$$$$$$$$*oooooooooooooooooooooo$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;;;;;;;;;!******$***&amp;o
+    </p>
+    <p>
+      !!!!!!!oooooooooo******ooooooooo**$*o!!!$!;!$*oo*$$$$$**$$$$$$;;;;;o$$****$$$$$$$$$$$$$$$$$oooooooo$ooooooooooooo*&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$!;;;;;;;;;******$***&amp;o$
+    </p>
+    <p>
+      !!!!!!!oooooooo*********oooooooo$ooo!!o!!!!ooo;;!o$$$******;;&amp;&amp;&amp;&amp;&amp;&amp;;;;ooo!oooooo****$$$$$$$$$oooo$ooooooo$ooooooooo*&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$!;;;;;;;;;;$***********$*
+    </p>
+    <p>
+      !!!!!!oooooooo***********oooooooo&amp;**ooooooo*!;;;;;$ooooooo;o&amp;*;8888&amp;*;!!!!!!!!!!!!o!oo***$$$$**oooo$ooo$oooooooooooo*$&amp;&amp;&amp;$*;;;;;;;;;;;;;******$***&amp;***
+    </p>
+    <p>
+      !!!!!!oooooooo************ooooooooo$$$*$$$!;;;;;;;ooooo!!$;&amp;88888888&amp;;;o!!!!!!!!!!!!!!!o!o*o;;;;!*oooooooooooooooooo$;;;;;;;;;;;;;;;;;;;*********$****
+    </p>
+    <p>
+      !!!!!!ooooooo***************ooooooooooooo;;;;;;;;!ooooo!!o;o8888888&amp;$;$!!!!!!!!!!!!!!!!!!$;;&amp;&amp;!8888&amp;ooooooooooooo**$*;;;;;;;;;;;;;;;;;;!$************$
+    </p>
+    <p>
+      !!!!!oooooooo***************ooooooooo!oo*;;;;;;;;*oo*o!!!!*;;&amp;&amp;8&amp;&amp;$;;*!!!!!!!!!!!!!!!!!!$;o&amp;88888888&amp;!oooooooooo$$$$*;;;;;;;;;;;;;;;;;;!$$************
+    </p>
+    <p>
+      !!!!oooooooo******************oooooooooo$;;;;;;;;$oo$oo!!!!oo$;;;;$o!!!!!!!o$ooo!!!!!!!!*;&amp;888888888&amp;;;$$*ooooo*$$oo$;;;;;;!!*o!;;;;;;;;!$$$**********
+    </p>
+    <p>
+      !!!!ooooooooo****************ooooooooooo$!;;;;;;;$oo$oo$oo$ooo!o!!!!!!!!!!!o$****$o!!!!!$;$888888888&amp;;;oo*$$$**$$ooo;;;;;;o!!!!$$!!!!$$***$$$$$*****$*
+    </p>
+    <p>
+      !!!!ooooooooo******************ooooooooo*oo;;;;;;*ooo!!!!oo*oo!ooo!!!!!!!!!!ooooo!!!!!!!!o;!&amp;&amp;8888&amp;$;;$!oo*$$$$$ooo$;;;;;;!!!!*$********$$$$$$$&amp;$**ooo
+    </p>
+    <p>
+      !!!!!ooooooo********************ooooooooo$ooo;;;;$oo$!!!!!!!!!!!!o!!!*!!!!!!o*o!!!!!!!!!!oo;;;;;;;;;$!!!!o*$$$$oooo!;;;!&amp;&amp;*****$*$$$$$$$$$$********ooo
+    </p>
+    <p>
+      !!!!!!oooooo********************oooooooooo*oooo;;$ooo$o!!!!!!!!!!!!!!!oooo!ooo!!!!!!!!!!!!!!ooo$$oo!!!!!!**$$$oooo!;;$$&amp;&amp;&amp;&amp;&amp;*$*&amp;$$$$&amp;$$$$$$$******oooo
+    </p>
+    <p>
+      !!!!!ooooooo********************ooooooooooooooooo$ooo*$!o!!!!!!!!!!!!!oo&amp;o;;;$ooo!!!*!!!!!!o*!oooo!!!!!!o*$$*ooooo!!$&amp;*o&amp;&amp;&amp;&amp;&amp;&amp;!oo**$$$$$$$$$$******ooo
+    </p>
+    <p>
+      !!!!!ooooooo********************ooooooooooooo$ooo$ooo$$o$o!!!!!!!!!!!!oo&amp;&amp;****$$$*o!!!!!!!!!!!!oo!*o!!!!o*$$oooo$!&amp;&amp;&amp;&amp;&amp;oooo*&amp;&amp;o****$$$$$$$$$$********o
+    </p>
+    <p>
+      !!!!!ooooooo*********************ooooooooo$$$$*$ooooo&amp;$ooooo!!!!!!!!!!o*&amp;******$*o!!!!!!!!!!!!!!!!!!!!!o*$$oooo$!&amp;&amp;&amp;&amp;&amp;&amp;&amp;ooooooooo$$$$$$$$$$$$*******o*
+    </p>
+    <p>
+      !!!!!ooooooo**********$*$$*********ooooooo$$&amp;&amp;&amp;$*$$oo$$oooooo$oo!!!!!!!o*******o!!!!!!!!!!!!!!!!!!!!!!o**$oooo$!&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$$&amp;oooo$$$$$$$$$$$$$$*********
+    </p>
+    <p>
+      !!!!oooooooo**********$$$$$********oooooo$$$&amp;&amp;&amp;&amp;&amp;$$&amp;*$&amp;*$oooooooo$o!!!oo******o!o!!!!!!!!!!!!!!!!!!oo**$&amp;oooo$!o&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;$$$$$$$$$$$$$$$$$$$*********
+    </p>
+    <p>
+      !!!!!ooooooo*********$$$$***********ooooo$o$&amp;&amp;&amp;$$$$$&amp;$&amp;*oo!$o$ooooooo$oo$;;;$oo!!!!!!!!!!!!!!!!*!o*$$$oooooo$!!&amp;&amp;&amp;&amp;88&amp;&amp;&amp;&amp;********$$$$$$$$$$***********
+    </p>
+    <p>
+      !!o!!ooooooo********$$$$$$$$$*******ooooooooo&amp;&amp;$$$$$*ooo**$!;;;;;;!$*o&amp;ooo*oo*$$$*ooooooooo*$$$oooooooooooo*ooo&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;*********$$$$$$$$$************
+    </p>
+    <p>
+      oo!!oooooooo*******$*$$$$$$$$$******ooooooo$$oooooooo$*oooo*;;;;;;;;!$$*ooo*$$$$$$$$$ooooooooooooooooo*oo*oooo$&amp;&amp;&amp;&amp;&amp;&amp;&amp;&amp;*********$*$$$$$$$*************
+    </p>
+    <p>
+      oo!ooooooooo********$$$$$$$$$$******oooooooo*oo$$ooo$$**$o*!;;;;;;;!$!;;!$oooo$$$$$ooooooo$$&amp;*ooooooo*oo$oooooo&amp;&amp;&amp;&amp;&amp;************$$$$$$$*$*********ooo*
+    </p>
+    <p>
+      ooooooooooooo*******$$$$$$$$$$$******oooooo$ooo*$&amp;$*o&amp;***oooooooo&amp;$!;;;;;;!o*oooooooo$oo&amp;&amp;*&amp;&amp;&amp;&amp;&amp;&amp;ooo$oo*oooo*$*oooooo***********$$$$$$$$$*********oooo
+    </p>
+    <p>
+      ooooooooooooo*******$$$$$$$$$$$*****ooooo*ooooooooooo$oooooooooo&amp;&amp;&amp;&amp;$!;;;;;!*o*oooooooo*&amp;*&amp;&amp;8&amp;&amp;&amp;o*!$oo!;;;!$oooooooo**********$$$$$$$$$$**********oooo
+    </p>
+    <p>
+      ooooooooooooo*******$$$$$$$$$$$******oo$oooooooooooooooooooooooo&amp;&amp;&amp;&amp;&amp;&amp;;;;;;;$!;o$o!!*$o**&amp;&amp;&amp;&amp;&amp;&amp;&amp;!;*ooo;;;;;;;*ooooo**********$$$$$$$$$$$*************$
+    </p>
+    <p>
+      oooooooooooooo********$$$$$$$$*******$ooooooooooooooooooooooooo*&amp;&amp;&amp;&amp;&amp;$!;;;;;;$!!!!!!!!!o$&amp;&amp;&amp;&amp;&amp;&amp;!!*o*oo$;;;;;$*$$$$**********$$$$$$$$$$$$***********o$*
+    </p>
+    <p>
+      ooooooooooooo**********$$$$$$$$$***$**ooooooooooooooooooooooooo&amp;&amp;&amp;&amp;&amp;&amp;$!;;;;;;!!!!!!!!!!oo$&amp;&amp;&amp;&amp;!$o**$o*!!$oooo*o!!oo$$*******$$$$$$$$$$$$**********$***
+    </p>
+    <p>
+      ooooooooooooo********$$$$$$$$$$$$$*****oooooooooooooooooooooooo$&amp;&amp;&amp;&amp;&amp;&amp;;;;;;;!!!o!$!!!$!*!!!;!&amp;&amp;o*&amp;&amp;oooooooooo*o!!oo&amp;$$******$$$$$$$$$$$$$*******o*****
+    </p>
+    <p>
+      *oooooooooooo********$$$$$$$$$$$$*******oooooooooooooooooooooooo&amp;8&amp;&amp;$!;;;;!!$$!!!!!!!!!!*$;!$&amp;oo$*&amp;o*!ooooooo$oooo$*********$$$$$$$$$$$$*******$******
+    </p>
+    <p>
+      **ooooooooooo********$$$$$$$$$$$$$******ooooooooooooooooooooooooo&amp;&amp;&amp;!;;;;;$;;!o!!!*o;;!$;!*$&amp;*o*&amp;&amp;$oooo$oooooo&amp;oo$$********$$$$$$$$$$$$$**************
+    </p>
+    <p>
+      **ooooooooooo********$$$$$$$$$$$$$*******ooooooooooooooooooooooooo&amp;!;*;;;;$;;;;;;!;!;;;;;!o&amp;&amp;&amp;8&amp;&amp;$oooooooo*ooooo*$$********$$$$$$$$$$$*$****$*********
+    </p>
+    <p>
+      ***ooooooooooo*******$*$$$$$$$$$$********ooooooooooooooooooooooooo!!&amp;;;;*;$;;;;;;;;;;;;;;!$&amp;&amp;&amp;&amp;o*$oooooooooo*!ooo**********$$$$$$*$$$$$***$***********
+    </p>
+    <p>
+      ****oooooooooo********$$$$$$$$$$********ooooooooooooooooooooooooooooooo$;;&amp;;;;;;;;;;;;;;;;o$oooo$$$$$*ooooooooo$o*********$$*$$$$$$$$***o$************
+    </p>
+  </div>
+
+  <div class="title">
+    <span class="nes-text is-primary">Tony Tony Chopper</span>
+  </div>
+
+  <script src="./videoToString.js"></script>
+  <script>
+
+    window.onload = function () {
+      var videoToString = new VideoToString("player");
+    }
+    function play() {
+      document.querySelector('#cover').style.display = 'none';
+      document.querySelector('#player').play()
+    }
+    function pause() {
+      document.querySelector('#player').pause()
+    }
+  </script>
+</body>
+
+</html>
